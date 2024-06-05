@@ -6,11 +6,10 @@ const initialState = {
   apple: 0 ,
   lays : 0 ,
   juice :0 ,
-  silk :0
+  silk :0 ,
 }
 
 const counterSlice = createSlice({
-
   name: 'count',
   initialState,
   reducers: {
@@ -22,9 +21,10 @@ const counterSlice = createSlice({
       if (state[action.payload] > 0) {
         state[action.payload] -= 1;
       }
-    }
+    } ,
+    reset: () => initialState
   }
 })
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, decrement , reset } = counterSlice.actions;
 export default counterSlice.reducer;
