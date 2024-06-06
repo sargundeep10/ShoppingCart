@@ -1,11 +1,13 @@
 import React from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { increment} from "./counterSlice";
 import { Link} from "react-router-dom";
 
 const Cart = () => {
     const dispatch = useDispatch();
-    // const { coffee , apple , lays } = useSelector((state ) => state.counter);
+    const { coffee , apple , lays , juice , silk} = useSelector((state ) => state.counter);
+
+    const count = coffee + apple + lays + juice + silk ;
 
     const handleIncrement = (itemName) => {
         dispatch(increment(itemName));
@@ -77,6 +79,7 @@ const Cart = () => {
                 <div className="Cart">
                     <Link to = "/CartDisplay" >CART</Link>
                     <img className = "cartImage"  src = "data:image/jpeg;base64,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" alt = "cart" />
+                    <span>{count}</span>
                 </div>
             </div>
     )
